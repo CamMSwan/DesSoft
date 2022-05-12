@@ -11,7 +11,6 @@ if iniciar == 's':
     while Jogo == 0:
         tentativas = 20
         lista_paises_tentados = []
-        vitoria = 0
         dados_normalizados = Bp.normaliza(Base_paises.continentes)
         r = 6371
         def escolher_pais(comando):
@@ -24,9 +23,17 @@ if iniciar == 's':
                 pais_escolhido = random.choice(lista_paises)
                 return pais_escolhido
         print('Bem Vindo ao adivinha paises')
+        
         pais_escolhido = escolher_pais(Jogo)
         dados_pais_escolhido = dados_normalizados[pais_escolhido]
+        coordenadas_pais_escolhido = dados_pais_escolhido['geo']
+        latidude_pe = coordenadas_pais_escolhido['latitude']
+        longitude_pe = coordenadas_pais_escolhido['longitude']
+        
         print(pais_escolhido)
+        print(dados_pais_escolhido)
+        print(latidude_pe)
+        print(longitude_pe)
                 
         i = 0
         while i < tentativas:

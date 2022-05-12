@@ -6,3 +6,4 @@ import Haversine as Dist
 # tentar denovo
 #sera que conseguimos?
 #OBRIGADO FINALMENTE FUNCIONOU
+#confirmação real

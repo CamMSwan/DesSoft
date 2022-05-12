@@ -5,7 +5,7 @@ import Base_paises
 import math 
 import random 
 
-#NInanogitkekek
+
 iniciar = input('Desejar iniciar? s/n :')
 if iniciar == 's':
     Jogo = 0

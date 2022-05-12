@@ -21,7 +21,5 @@ def sorteia_letra(palavra,lista_restritiva):
         
     return retorno
                 
-palavra = 'Andorra a-Velha'
-lista_restritiva =  ['a', 'r']  
-print(sorteia_letra(palavra,lista_restritiva))
+
             

@@ -2,6 +2,9 @@ import Normalizando_base as Bp
 import Esta_na_lista as El
 import Haversine as Dist
 import Base_paises
+import Adicionando_lista_ordenada as Lo
+import Sorteia_Letra_com_Restrições as Sl
+import Sorteando_Países as SortPa
 import math 
 import random 
 
@@ -13,17 +16,9 @@ if iniciar == 's':
         tentativas = 20
         lista_paises_tentados = []
         dados_normalizados = Bp.normaliza(Base_paises.continentes)
+        lista_paises_por_distancia = []
         r = 6371
-        def escolher_pais(comando):
-            lista_paises = []
-            if comando != '':
-                for paises in dados_normalizados.keys():
-                    if paises not in lista_paises:
-                        lista_paises.append(paises)
-            
-                pais_escolhido = random.choice(lista_paises)
-                return pais_escolhido
-            
+        
         def lista_pais(comando):
             lista_paises = []
             if comando != '':
@@ -37,7 +32,7 @@ if iniciar == 's':
         print('Bem Vindo ao adivinha paises')
         
         lista_paises = lista_pais(Jogo)
-        pais_escolhido = escolher_pais(Jogo)
+        pais_escolhido = SortPa.sorteia_pais(dados_normalizados)
         dados_pais_escolhido = dados_normalizados[pais_escolhido]
         coordenadas_pais_escolhido = dados_pais_escolhido['geo']
         latidude_pe = coordenadas_pais_escolhido['latitude']

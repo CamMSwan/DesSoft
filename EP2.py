@@ -4,5 +4,5 @@ import Haversine as Dist
 
 #vamos começar agora 
 # tentar denovo
-
+#sera que conseguimos?
 

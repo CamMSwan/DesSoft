@@ -25,6 +25,7 @@ if iniciar == 's':
                 return pais_escolhido
         print('Bem Vindo ao adivinha paises')
         pais_escolhido = escolher_pais(Jogo)
+        dados_pais_escolhido = dados_normalizados[pais_escolhido]
         print(pais_escolhido)
                 
         i = 0
@@ -37,7 +38,7 @@ if iniciar == 's':
 
         if i == 100:
             print("PARABENS, VOCE ACERTOU!")
-            iniciar = input('Desejar iniciar novamente? s/n :')
+            iniciar = input('Desejar jogar novamente? s/n :')
             if iniciar not in ('s','n'):
                     print("Resposta Invalida")
             if iniciar == 'n':

@@ -22,8 +22,20 @@ if iniciar == 's':
             
                 pais_escolhido = random.choice(lista_paises)
                 return pais_escolhido
+            
+        def lista_pais(comando):
+            lista_paises = []
+            if comando != '':
+                for paises in dados_normalizados.keys():
+                    if paises not in lista_paises:
+                        lista_paises.append(paises)
+
+                return lista_paises
+            
+            
         print('Bem Vindo ao adivinha paises')
         
+        lista_paises = lista_pais(Jogo)
         pais_escolhido = escolher_pais(Jogo)
         dados_pais_escolhido = dados_normalizados[pais_escolhido]
         coordenadas_pais_escolhido = dados_pais_escolhido['geo']
@@ -31,17 +43,30 @@ if iniciar == 's':
         longitude_pe = coordenadas_pais_escolhido['longitude']
         
         print(pais_escolhido)
-        print(dados_pais_escolhido)
-        print(latidude_pe)
-        print(longitude_pe)
-                
+        
         i = 0
         while i < tentativas:
             print('Numero de tentativas {}'.format(tentativas))
             resposta = input('Qual pais voce acha que é? --> ')
+            if resposta in lista_paises:
+                dados_resposta = dados_normalizados[resposta]
+                coordenadas_resposta = dados_resposta['geo']
+                latidude_re = coordenadas_resposta['latitude']
+                longitude_re = coordenadas_resposta['longitude']
+                distancia_eles = Dist.haversine(r,latidude_pe,longitude_pe,latidude_re,longitude_re)
+                lista_resposta = [resposta,distancia_eles]
+                if lista_resposta in lista_paises_tentados:
+                    print('Ja tentou esse!')
+                elif lista_resposta not in lista_paises_tentados:
+                    lista_paises_tentados.append(lista_resposta)
+                    
+                tentativas -= 1
+            
             if resposta  == pais_escolhido:
                 i = 100      
-            tentativas -= 1
+            
+            if resposta not in lista_paises:
+                print('Resposta Invalida')
 
         if i == 100:
             print("PARABENS, VOCE ACERTOU!")

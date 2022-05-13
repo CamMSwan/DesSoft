@@ -5,7 +5,7 @@ import Base_paises
 import Adicionando_lista_ordenada as Lo
 import Sorteia_Letra_com_Restrições as Sl
 import Sorteando_Países as SortPa
-import math 
+import colorir as cor
 import random 
 
 lista_vazia = []
@@ -52,6 +52,7 @@ if iniciar == 's':
         lista_dicas_usadas = []
         populacao_escolhida = dados_pais_escolhido['populacao']
         continente_escolhido = dados_pais_escolhido['continente']
+        lista_opcao_dicas = [1,2,3,4,5,0]
 
             
 
@@ -86,8 +87,29 @@ if iniciar == 's':
 
             if resposta == 'dica':
                 #Menu de opções:
-                dica = int(input('Escolha a opção [0|1|2|3|4|5]: '))
-                if dica ==0:
+                if tentativas > 7 and len(lista_dicas_usadas) == 0:
+                    dica = int(input('Escolha a opção [0|1|2|3|4|5]: '))
+                elif tentativas > 7 and 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|4|5]: '))
+                elif tentativas > 7 and 4 in lista_dicas_usadas and 3 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|3|5]: '))
+                elif tentativas > 5 and 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|3|4]: '))
+                elif tentativas > 7 and 3 in lista_dicas_usadas and 4 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|5]: '))
+                elif tentativas > 5 and 3 in lista_dicas_usadas and 5 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|4]: '))
+                elif tentativas > 6 and 4 in lista_dicas_usadas and 5 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [0|1|2|3]: '))
+                elif tentativas > 4:
+                    dica = int(input('Escolha a opção [0|1|2]: '))
+                elif tentativas > 3:
+                    dica = int(input('Escolha a opção [0|2]: '))
+                elif tentativas < 3:
+                    print('Não consegue comprar dicas!')
+                    dica = 0
+                    
+                if dica == 0:
                     print('Numero de tentativas {}'.format(tentativas))
         
                     resposta = input('Qual pais voce acha que é? Ou quer uma dica? --> ')
@@ -129,6 +151,11 @@ if iniciar == 's':
                         lista_dicas_usadas.append(5)
                         print (continente_escolhido)
                         tentativas -= 7
+                        
+                if dica not in lista_opcao_dicas:
+                    print('Opção Inválida')
+                    dica = 0
+                    
 
             if resposta  == pais_escolhido:
                 i = 100      

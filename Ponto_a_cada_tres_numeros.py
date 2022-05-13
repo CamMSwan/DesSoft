@@ -10,4 +10,8 @@ def normalizar(dica_nao_normalizada):
                     dica_normalizada += dica_nao_normalizada[l]
                 l -= 1
                 dica_real = dica_normalizada[::-1]
-            return dica_real
+            if dica_real[0] == '.':
+                return dica_real[1:]
+            else:
+                return dica_real
+       

@@ -51,8 +51,13 @@ if iniciar == 's':
                 longitude_re = coordenadas_resposta['longitude']
                 distancia_eles = Dist.haversine(r,latidude_pe,longitude_pe,latidude_re,longitude_re)
                 lista_resposta = [resposta,distancia_eles]
+
+                lista_paises_por_distancia = Lo.adiciona_em_ordem(resposta,distancia_eles,lista_paises_por_distancia)
+                #ainda tem que printar coloido os valores acima 
+
                 if lista_resposta in lista_paises_tentados:
                     print('Ja tentou esse!')
+
                 elif lista_resposta not in lista_paises_tentados:
                     lista_paises_tentados.append(lista_resposta)
                     

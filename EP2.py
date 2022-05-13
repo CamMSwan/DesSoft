@@ -48,6 +48,11 @@ if iniciar == 's':
         for cores , num in cor_bandeira.items():
             if num!= 0 and cores != 'outras':
                 lista_cores_bandeira.append(cores)
+        area_escolhida = dados_pais_escolhido['area']
+        lista_dicas_usadas = []
+        populacao_escolhida = dados_pais_escolhido['populacao']
+        continente_escolhido = dados_pais_escolhido['continente']
+
             
 
         
@@ -102,8 +107,28 @@ if iniciar == 's':
                         if letra_printada not in letras_escolhidas:
                             letras_escolhidas.append(letra_printada)
                             print(letra_printada)
+                            tentativas -= 3
                             break
+                
+                if dica == 3:
+                    if dica not in lista_dicas_usadas:
+                        lista_dicas_usadas.append(3)
+                        print (area_escolhida)
+                        tentativas -= 6
+                    else:
+                        print('Dica já usada!')
+                        
+                if dica == 4:
+                    if dica not in lista_dicas_usadas:
+                        lista_dicas_usadas.append(4)
+                        print (populacao_escolhida)
+                        tentativas -= 5
 
+                if dica == 5:
+                     if dica not in lista_dicas_usadas:
+                        lista_dicas_usadas.append(5)
+                        print (continente_escolhido)
+                        tentativas -= 7
 
             if resposta  == pais_escolhido:
                 i = 100      
@@ -118,6 +143,14 @@ if iniciar == 's':
                     print("Resposta Invalida")
             if iniciar == 'n':
                 print('Até Logo!')
+                break
+        
+        if tentativas <= 0: 
+            acabou = input('Suas tentativas acabaram, gosteria de reiniciar o jogo? s/n')
+            if acabou == 's':
+                print (resposta)
+            else: 
+                print('Obrigada, volte sempre!')
                 break
                 
 

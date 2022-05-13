@@ -8,6 +8,8 @@ import Sorteando_Países as SortPa
 import math 
 import random 
 
+lista_vazia = []
+
 
 iniciar = input('Desejar iniciar? s/n :')
 if iniciar == 's':
@@ -37,13 +39,27 @@ if iniciar == 's':
         coordenadas_pais_escolhido = dados_pais_escolhido['geo']
         latidude_pe = coordenadas_pais_escolhido['latitude']
         longitude_pe = coordenadas_pais_escolhido['longitude']
+        cor_bandeira = dados_pais_escolhido['bandeira']
+        lista_impressa_cores = []
+        lista_cores_bandeira = []
+        capital = dados_pais_escolhido['capital']
+        lista_letras_capital = []
+        letras_escolhidas = []
+        for cores , num in cor_bandeira.items():
+            if num!= 0 and cores != 'outras':
+                lista_cores_bandeira.append(cores)
+            
+
         
         print(pais_escolhido)
-        
+        print(dados_pais_escolhido)
+        print (lista_cores_bandeira)
         i = 0
         while i < tentativas:
             print('Numero de tentativas {}'.format(tentativas))
-            resposta = input('Qual pais voce acha que é? --> ')
+        
+            resposta = input('Qual pais voce acha que é? Ou quer uma dica? --> ')
+            
             if resposta in lista_paises:
                 dados_resposta = dados_normalizados[resposta]
                 coordenadas_resposta = dados_resposta['geo']
@@ -62,11 +78,37 @@ if iniciar == 's':
                     lista_paises_tentados.append(lista_resposta)
                     
                 tentativas -= 1
-            
+
+            if resposta == 'dica':
+                #Menu de opções:
+                dica = int(input('Escolha a opção [0|1|2|3|4|5]: '))
+                if dica ==0:
+                    print('Numero de tentativas {}'.format(tentativas))
+        
+                    resposta = input('Qual pais voce acha que é? Ou quer uma dica? --> ')
+
+                if dica == 1:
+                    while True:
+                        cor = random.choice(lista_cores_bandeira)
+                        if cor not in lista_impressa_cores:
+                            lista_impressa_cores.append(cor)
+                            tentativas -= 4
+                            break
+                    print (lista_impressa_cores)
+
+                if dica == 2:
+                    while True:
+                        letra_printada = Sl.sorteia_letra(capital, lista_vazia)
+                        if letra_printada not in letras_escolhidas:
+                            letras_escolhidas.append(letra_printada)
+                            print(letra_printada)
+                            break
+
+
             if resposta  == pais_escolhido:
                 i = 100      
             
-            if resposta not in lista_paises:
+            if resposta not in lista_paises and resposta != 'dica':
                 print('Resposta Invalida')
 
         if i == 100:
@@ -78,6 +120,6 @@ if iniciar == 's':
                 print('Até Logo!')
                 break
                 
-                        
+
     
         

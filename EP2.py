@@ -5,7 +5,7 @@ import Base_paises
 import Adicionando_lista_ordenada as Lo
 import Sorteia_Letra_com_Restrições as Sl
 import Sorteando_Países as SortPa
-import colorir as cor
+import Ponto_a_cada_tres_numeros as norm
 import random 
 
 lista_vazia = []
@@ -67,10 +67,17 @@ if iniciar == 'sim':
         for cores , num in cor_bandeira.items():
             if num!= 0 and cores != 'outras':
                 lista_cores_bandeira.append(cores)
-        area_escolhida = dados_pais_escolhido['area']
+        area_escolhida = str(dados_pais_escolhido['area'])
+        area_escolhida_normalizada = norm.normalizar(area_escolhida)
+        
         lista_dicas_usadas = []
-        populacao_escolhida = dados_pais_escolhido['populacao']
+        
+        populacao_escolhida = str(dados_pais_escolhido['populacao'])
+        populacao_escolhida_normalizada = norm.normalizar(populacao_escolhida)
+        
+                    
         continente_escolhido = dados_pais_escolhido['continente']
+        
         lista_opcao_dicas = [1,2,3,4,5,0]
 
             
@@ -151,7 +158,7 @@ if iniciar == 'sim':
                             lista_impressa_cores.append(cor)
                             tentativas -= 4
                             break
-                    print (lista_impressa_cores)
+                    print ('Cores da bandeira: {}'.format(lista_impressa_cores))
 
                 if dica == 2:
                     while True:
@@ -165,7 +172,7 @@ if iniciar == 'sim':
                 if dica == 3:
                     if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(3)
-                        print (area_escolhida)
+                        print ('Area: {} Km2'.format(area_escolhida_normalizada))
                         tentativas -= 6
                     else:
                         print('\033[1;41mEstá dica já foi usada!\033[m')
@@ -173,13 +180,13 @@ if iniciar == 'sim':
                 if dica == 4:
                     if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(4)
-                        print (populacao_escolhida)
+                        print ('População = {} Habitantes'.format(populacao_escolhida_normalizada))
                         tentativas -= 5
 
                 if dica == 5:
                      if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(5)
-                        print (continente_escolhido)
+                        print ('Continente: {}'.format(continente_escolhido))
                         tentativas -= 7
                         
                 if dica not in lista_opcao_dicas:
@@ -190,17 +197,31 @@ if iniciar == 'sim':
             if resposta  == pais_escolhido:
                 i = 100      
             
-            if resposta not in lista_paises and resposta != 'dica':
+            if resposta == 'desisto':
+                i = 50
+            
+            if resposta not in lista_paises and resposta != 'dica' and resposta != 'desisto' :
                 print('\033[33mResposta Invalida\033[m')
 
         if i == 100:
             print("\033[1;30;42mPARABENS, VOCE ADIVINHOU O PAÍS QUE FOI ESCOLHIDO! :) \033[m")
-            iniciar = input('\033[1;36mDesejar iniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+            iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
             if iniciar not in ('sim','nao'):
                     print("\033[31mResposta Invalida\033[m")
             if iniciar == 'nao':
                 print('\033[35mAté Logo!\033[m')
                 break
+        
+        if i == 50:
+            print("\033[1;30;42mFRACO!, o país era {}) \033[m".format(pais_escolhido))
+            desistencia = input('\033[1;36mTem certeza que quer desistir? \033[32msim\033[m/\033[31mnao\033[m:')
+            if desistencia not in ('sim','nao'):
+                    print("\033[31mResposta Invalida\033[m")
+            if desistencia == 'sim':
+                print('\033[35mAté Logo!\033[m')
+                break
+            if desistencia == 'nao':
+                iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
         
         if tentativas <= 0: 
             acabou = input('Suas \033[33mtentativas\033[m acabaram, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :')

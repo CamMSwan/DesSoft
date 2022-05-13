@@ -11,8 +11,8 @@ import random
 lista_vazia = []
 
 
-iniciar = input('Desejar iniciar? s/n :')
-if iniciar == 's':
+iniciar = input('\033[1;36mDesejar iniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+if iniciar == 'sim':
     Jogo = 0
     while Jogo == 0:
         tentativas = 20
@@ -31,7 +31,7 @@ if iniciar == 's':
                 return lista_paises
             
             
-        print('Bem Vindo ao adivinha paises')
+        print('\033[1;30;42mBem Vindo ao Adivinha Paises!\033[m')
         
         lista_paises = lista_pais(Jogo)
         pais_escolhido = SortPa.sorteia_pais(dados_normalizados)
@@ -62,9 +62,9 @@ if iniciar == 's':
         print (lista_cores_bandeira)
         i = 0
         while i < tentativas:
-            print('Numero de tentativas {}'.format(tentativas))
+            print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
         
-            resposta = input('Qual pais voce acha que é? Ou quer uma dica? --> ')
+            resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
             if resposta in lista_paises:
                 dados_resposta = dados_normalizados[resposta]
@@ -78,7 +78,7 @@ if iniciar == 's':
                 #ainda tem que printar coloido os valores acima 
 
                 if lista_resposta in lista_paises_tentados:
-                    print('Ja tentou esse!')
+                    print('\033[1;41mVocê ja chutou este pais!\033[m')
 
                 elif lista_resposta not in lista_paises_tentados:
                     lista_paises_tentados.append(lista_resposta)
@@ -88,31 +88,31 @@ if iniciar == 's':
             if resposta == 'dica':
                 #Menu de opções:
                 if tentativas > 7 and len(lista_dicas_usadas) == 0:
-                    dica = int(input('Escolha a opção [0|1|2|3|4|5]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
                 elif tentativas > 7 and 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|4|5]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
                 elif tentativas > 7 and 4 in lista_dicas_usadas and 3 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|3|5]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: '))
                 elif tentativas > 5 and 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|3|4]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m]: '))
                 elif tentativas > 7 and 3 in lista_dicas_usadas and 4 in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|5]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[36m5\033[m]: '))
                 elif tentativas > 5 and 3 in lista_dicas_usadas and 5 in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|4]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: '))
                 elif tentativas > 6 and 4 in lista_dicas_usadas and 5 in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [0|1|2|3]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: '))
                 elif tentativas > 4:
-                    dica = int(input('Escolha a opção [0|1|2]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: '))
                 elif tentativas > 3:
-                    dica = int(input('Escolha a opção [0|2]: '))
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m]: '))
                 elif tentativas < 3:
-                    print('Não consegue comprar dicas!')
+                    print('\033[1;35mVocê não consegue mais comprar nenhuma dica! :( \033[m')
                     dica = 0
                     
                 if dica == 0:
-                    print('Numero de tentativas {}'.format(tentativas))
+                    print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
         
-                    resposta = input('Qual pais voce acha que é? Ou quer uma dica? --> ')
+                    resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
 
                 if dica == 1:
                     while True:
@@ -138,7 +138,7 @@ if iniciar == 's':
                         print (area_escolhida)
                         tentativas -= 6
                     else:
-                        print('Dica já usada!')
+                        print('\033[1;41mEstá dica já foi usada!\033[m')
                         
                 if dica == 4:
                     if dica not in lista_dicas_usadas:
@@ -153,7 +153,7 @@ if iniciar == 's':
                         tentativas -= 7
                         
                 if dica not in lista_opcao_dicas:
-                    print('Opção Inválida')
+                    print('\033[1;33mOpção Inválida\033[m')
                     dica = 0
                     
 
@@ -161,23 +161,23 @@ if iniciar == 's':
                 i = 100      
             
             if resposta not in lista_paises and resposta != 'dica':
-                print('Resposta Invalida')
+                print('\033[33mResposta Invalida\033[m')
 
         if i == 100:
-            print("PARABENS, VOCE ACERTOU!")
-            iniciar = input('Desejar jogar novamente? s/n :')
-            if iniciar not in ('s','n'):
-                    print("Resposta Invalida")
-            if iniciar == 'n':
-                print('Até Logo!')
+            print("\033[1;30;42mPARABENS, VOCE ADIVINHOU O PAÍS QUE FOI ESCOLHIDO! :) \033[m")
+            iniciar = input('\033[1;36mDesejar iniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+            if iniciar not in ('sim','nao'):
+                    print("\033[31mResposta Invalida\033[m")
+            if iniciar == 'nao':
+                print('\033[35mAté Logo!\033[m')
                 break
         
         if tentativas <= 0: 
-            acabou = input('Suas tentativas acabaram, gosteria de reiniciar o jogo? s/n')
-            if acabou == 's':
+            acabou = input('Suas \033[33mtentativas\033[m acabaram, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :')
+            if acabou == 'sim':
                 print (resposta)
             else: 
-                print('Obrigada, volte sempre!')
+                print('\033[1;30;46mObrigada, volte sempre!\033[m')
                 break
                 
 

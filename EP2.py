@@ -30,8 +30,27 @@ if iniciar == 'sim':
 
                 return lista_paises
             
-            
-        print('\033[1;30;42mBem Vindo ao Adivinha Paises!\033[m')
+        print(' ===============================')
+        print('|                               |')
+        print('| \033[1;32mBem Vindo ao Adivinha Paises!\033[m |')
+        print('|             \033[32m2022\033[m              |')
+        print(' ====== Desing de Software ===== ')
+
+        print('')
+        
+        print('Comandos:')
+        print('     dica        --> entra no mercado de dicas')
+        print('     desisto     --> desiste da rodada')
+        print('     inventário  --> exibe sua posição')
+
+        print('')
+
+        print('Um \033[35mpaís\033[m foi escolhido, tente adivinhar!')
+
+        print('')
+        print('Você tem \033[33m20\033[m tentativas')
+
+        print('')
         
         lista_paises = lista_pais(Jogo)
         pais_escolhido = SortPa.sorteia_pais(dados_normalizados)
@@ -86,6 +105,17 @@ if iniciar == 'sim':
                 tentativas -= 1
 
             if resposta == 'dica':
+                print('')
+                print('Mercado de Dicas:')
+                print('----------------------------------------------')
+                print(' [\033[31m0\033[m] Sem dica')
+                print(' [\033[32m1\033[m] Cor da bandeira     \033[32m->\033[m custa 4 tentativas')
+                print(' [\033[33m2\033[m] Letra da capital    \33[33m->\033[m custa 3 tentativas')
+                print(' [\033[34m3\033[m] Área                \033[34m->\033[m custa 6 tentavis')
+                print(' [\033[35m4\033[m] Populeção           \033[35m->\033[m custa 5 tentativas')
+                print(' [\033[36m5\033[m] COntinente          \033[36m->\033[m custa 7 tentativas')
+                print('----------------------------------------------')
+                print ('')
                 #Menu de opções:
                 if tentativas > 7 and len(lista_dicas_usadas) == 0:
                     dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))

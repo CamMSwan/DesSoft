@@ -5,7 +5,7 @@ import Base_paises
 import Adicionando_lista_ordenada as Lo
 import Sorteia_Letra_com_Restrições as Sl
 import Sorteando_Países as SortPa
-import colorir as cor
+import Ponto_a_cada_tres_numeros as norm
 import random 
 
 lista_vazia = []
@@ -49,27 +49,13 @@ if iniciar == 'sim':
             if num!= 0 and cores != 'outras':
                 lista_cores_bandeira.append(cores)
         area_escolhida = str(dados_pais_escolhido['area'])
-        area_escolhida_normalizada = ''
-        l = 0
-        while l < len(area_escolhida):
-            if l%3 == 0:
-                area_escolhida_normalizada += '.'
-            else:
-                area_escolhida_normalizada += area_escolhida[l]
-            l += 1
-            
+        area_escolhida_normalizada = norm.normalizar(area_escolhida)
+        
         lista_dicas_usadas = []
         
         populacao_escolhida = str(dados_pais_escolhido['populacao'])
-        populacao_escolhida_normalizada = '' + populacao_escolhida[0]
-        f = len(populacao_escolhida) - 1
+        populacao_escolhida_normalizada = norm.normalizar(populacao_escolhida)
         
-        while f >=  0:
-            for letra in populacao_escolhida:
-                populacao_escolhida_normalizada += populacao_escolhida
-                populacao_escolhida_normalizada += '.'
-            
-            f -= 3
                     
         continente_escolhido = dados_pais_escolhido['continente']
         
@@ -181,17 +167,31 @@ if iniciar == 'sim':
             if resposta  == pais_escolhido:
                 i = 100      
             
-            if resposta not in lista_paises and resposta != 'dica':
+            if resposta == 'desisto':
+                i = 50
+            
+            if resposta not in lista_paises and resposta != 'dica' and resposta != 'desisto' :
                 print('\033[33mResposta Invalida\033[m')
 
         if i == 100:
             print("\033[1;30;42mPARABENS, VOCE ADIVINHOU O PAÍS QUE FOI ESCOLHIDO! :) \033[m")
-            iniciar = input('\033[1;36mDesejar iniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+            iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
             if iniciar not in ('sim','nao'):
                     print("\033[31mResposta Invalida\033[m")
             if iniciar == 'nao':
                 print('\033[35mAté Logo!\033[m')
                 break
+        
+        if i == 50:
+            print("\033[1;30;42mFRACO!, o país era {}) \033[m".format(pais_escolhido))
+            desistencia = input('\033[1;36mTem certeza que quer desistir? \033[32msim\033[m/\033[31mnao\033[m:')
+            if desistencia not in ('sim','nao'):
+                    print("\033[31mResposta Invalida\033[m")
+            if desistencia == 'sim':
+                print('\033[35mAté Logo!\033[m')
+                break
+            if desistencia == 'nao':
+                iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
         
         if tentativas <= 0: 
             acabou = input('Suas \033[33mtentativas\033[m acabaram, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :')

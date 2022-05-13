@@ -48,10 +48,31 @@ if iniciar == 's':
         for cores , num in cor_bandeira.items():
             if num!= 0 and cores != 'outras':
                 lista_cores_bandeira.append(cores)
-        area_escolhida = dados_pais_escolhido['area']
+        area_escolhida = str(dados_pais_escolhido['area'])
+        area_escolhida_normalizada = ''
+        l = 0
+        while l < len(area_escolhida):
+            if l%3 == 0:
+                area_escolhida_normalizada += '.'
+            else:
+                area_escolhida_normalizada += area_escolhida[l]
+            l += 1
+            
         lista_dicas_usadas = []
-        populacao_escolhida = dados_pais_escolhido['populacao']
+        
+        populacao_escolhida = str(dados_pais_escolhido['populacao'])
+        populacao_escolhida_normalizada = '' + populacao_escolhida[0]
+        f = len(populacao_escolhida) - 1
+        
+        while f >=  0:
+            for letra in populacao_escolhida:
+                populacao_escolhida_normalizada += populacao_escolhida
+                populacao_escolhida_normalizada += '.'
+            
+            f -= 3
+                    
         continente_escolhido = dados_pais_escolhido['continente']
+        
         lista_opcao_dicas = [1,2,3,4,5,0]
 
             
@@ -121,7 +142,7 @@ if iniciar == 's':
                             lista_impressa_cores.append(cor)
                             tentativas -= 4
                             break
-                    print (lista_impressa_cores)
+                    print ('Cores da bandeira: {}'.format(lista_impressa_cores))
 
                 if dica == 2:
                     while True:
@@ -135,7 +156,7 @@ if iniciar == 's':
                 if dica == 3:
                     if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(3)
-                        print (area_escolhida)
+                        print ('Area: {} Km2'.format(area_escolhida_normalizada))
                         tentativas -= 6
                     else:
                         print('Dica já usada!')
@@ -143,13 +164,13 @@ if iniciar == 's':
                 if dica == 4:
                     if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(4)
-                        print (populacao_escolhida)
+                        print ('População = {} Habitantes'.format(populacao_escolhida_normalizada))
                         tentativas -= 5
 
                 if dica == 5:
                      if dica not in lista_dicas_usadas:
                         lista_dicas_usadas.append(5)
-                        print (continente_escolhido)
+                        print ('Continente: {}'.format(continente_escolhido))
                         tentativas -= 7
                         
                 if dica not in lista_opcao_dicas:

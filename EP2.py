@@ -7,6 +7,7 @@ import Sorteia_Letra_com_Restrições as Sl
 import Sorteando_Países as SortPa
 import Ponto_a_cada_tres_numeros as norm
 import random 
+import time
 
 lista_vazia = []
 
@@ -36,19 +37,23 @@ if iniciar == 'sim':
         print('|             \033[32m2022\033[m              |')
         print(' ====== Desing de Software ===== ')
 
+        time.sleep(0.5)
+
         print('')
         
         print('Comandos:')
         print('     dica        --> entra no mercado de dicas')
         print('     desisto     --> desiste da rodada')
         print('     inventário  --> exibe sua posição')
+        time.sleep(0.5)
 
         print('')
 
         print('Um \033[35mpaís\033[m foi escolhido, tente adivinhar!')
+        time.sleep(1)
 
-        print('')
-        print('Você tem \033[33m20\033[m tentativas')
+        
+        
 
         print('')
         
@@ -83,12 +88,13 @@ if iniciar == 'sim':
             
 
         
-        print(pais_escolhido)
-        print(dados_pais_escolhido)
-        print (lista_cores_bandeira)
+        #print(pais_escolhido)
+        #print(dados_pais_escolhido)
+        #print (lista_cores_bandeira)
+        
         i = 0
         while i < tentativas:
-            print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
+            print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
         
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
@@ -112,6 +118,9 @@ if iniciar == 'sim':
                 tentativas -= 1
 
             if resposta == 'dica':
+                print('')
+                print('Processando...')
+                time.sleep(0.5)
                 print('')
                 print('Mercado de Dicas:')
                 print('----------------------------------------------')
@@ -218,16 +227,20 @@ if iniciar == 'sim':
             if desistencia not in ('sim','nao'):
                     print("\033[31mResposta Invalida\033[m")
             if desistencia == 'sim':
+                time.sleep(0.5)
                 print('\033[35mAté Logo!\033[m')
                 break
             if desistencia == 'nao':
+                time.sleep(0.5)
                 iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
         
         if tentativas <= 0: 
             acabou = input('Suas \033[33mtentativas\033[m acabaram, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :')
             if acabou == 'sim':
+                time.sleep(0.5)
                 print (resposta)
             else: 
+                time.sleep(0.5)
                 print('\033[1;30;46mObrigada, volte sempre!\033[m')
                 break
                 

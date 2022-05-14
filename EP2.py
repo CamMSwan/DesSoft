@@ -323,7 +323,7 @@ if iniciar == 'sim':
                 iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
         
         if tentativas <= 0 and i != 100: 
-            acabou = input('Suas \033[33mtentativas\033[m acabaram, o pais era \033[42m{} \033[m, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :'.format(pais_escolhido.upper()))
+            acabou = input('Suas \033[33mtentativas\033[m acabaram, o pais era \033[32m{}\033[m, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :'.format(pais_escolhido.upper()))
             if acabou == 'sim':
                 time.sleep(0.5)
                 print (resposta)

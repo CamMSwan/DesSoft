@@ -54,10 +54,6 @@ if iniciar == 'sim':
         time.sleep(1)
 
         
-        
-
-        print('')
-        
         lista_paises = lista_pais(Jogo)
         pais_escolhido = SortPa.sorteia_pais(dados_normalizados)
         dados_pais_escolhido = dados_normalizados[pais_escolhido]
@@ -89,7 +85,7 @@ if iniciar == 'sim':
             
 
         
-        print(pais_escolhido)
+        #print(pais_escolhido)
         #print(dados_pais_escolhido)
         #print (lista_cores_bandeira)
         

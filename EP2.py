@@ -88,14 +88,21 @@ if iniciar == 'sim':
             
 
         
-        #print(pais_escolhido)
-        #print(dados_pais_escolhido)
-        #print (lista_cores_bandeira)
+        print(pais_escolhido)
+        print(dados_pais_escolhido)
+        print (lista_cores_bandeira)
         
         i = 0
         while i < tentativas:
+            z = 0 
+            print('')
+            if lista_paises_por_distancia != []:
+                while z < len(lista_paises_por_distancia):
+                    distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])
+                    print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    z += 1
+            print('')
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
-        
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
             if resposta in lista_paises:

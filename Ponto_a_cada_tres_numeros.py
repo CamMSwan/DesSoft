@@ -14,4 +14,18 @@ def normalizar(dica_nao_normalizada):
                 return dica_real[1:]
             else:
                 return dica_real
-       
+            
+            
+def tira_virgula_normaliza(km):
+    str_km = str(km)
+    km_sem_virgula = ''
+    i = 0
+    while True:
+        if str_km[i] != '.':
+            km_sem_virgula += str_km[i]
+            i += 1
+        if str_km[i] == '.':
+            break
+        
+    km_normalizado = normalizar(km_sem_virgula)
+    return km_normalizado

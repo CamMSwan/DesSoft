@@ -84,14 +84,14 @@ if iniciar == 'sim':
                     
         continente_escolhido = dados_pais_escolhido['continente']
         
-        lista_opcao_dicas = [1,2,3,4,5,0]
+        lista_opcao_dicas = ['1','2','3','4','5','0']
 
             
 
         
         print(pais_escolhido)
-        print(dados_pais_escolhido)
-        print (lista_cores_bandeira)
+        #print(dados_pais_escolhido)
+        #print (lista_cores_bandeira)
         
         i = 0
         while i < tentativas:
@@ -123,7 +123,7 @@ if iniciar == 'sim':
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
-            if resposta in lista_paises:
+            if resposta in lista_paises and resposta != dica:
                 dados_resposta = dados_normalizados[resposta]
                 coordenadas_resposta = dados_resposta['geo']
                 latidude_re = coordenadas_resposta['latitude']
@@ -147,12 +147,15 @@ if iniciar == 'sim':
                 print('Processando...')
                 time.sleep(0.5)
                 #Menu de opções:
-                if tentativas > 3:
+                
+                dica = 8
+                if dica == 8:     
                     num_de_dicas = 0
-                    print('')
-                    print('Mercado de Dicas:')
-                    print('----------------------------------------------')
-                    print(' [\033[31m0\033[m] Sem dica')
+                    if tentativas > 3:
+                        print('')
+                        print('Mercado de Dicas:')
+                        print('----------------------------------------------')
+                        print(' [\033[31m0\033[m] Sem dica')
                     if len(lista_cores_bandeira) != len(lista_impressa_cores) and tentativas > 4:
                         print(' [\033[32m1\033[m] Cor da bandeira     \033[32m->\033[m custa 4 tentativas')
                         num_de_dicas += 1
@@ -168,118 +171,125 @@ if iniciar == 'sim':
                     if 5 not in lista_dicas_usadas and tentativas > 7:
                         print(' [\033[36m5\033[m] COntinente          \033[36m->\033[m custa 7 tentativas')
                         num_de_dicas += 1
-                    print('----------------------------------------------')
-                    print ('')
-                    
-                if tentativas > 7 and 3 not in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas and len(lista_cores_bandeira) != len(lista_impressa_cores):
-                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
-                
-                elif tentativas > 7 and len(lista_cores_bandeira) == len(lista_impressa_cores) and 3 not in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
-                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
-                
-                elif tentativas >= 7 and len(lista_cores_bandeira) == len(lista_impressa_cores):
-                    if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
-                    elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: '))
-                    elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|]: '))
-                    elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m]: '))
-                    elif 3  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 5:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[35m4\033[m]: '))
-                    elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[36m5\033[m]: '))
-                
-                elif tentativas >= 7 and len(lista_cores_bandeira) != len(lista_impressa_cores):
-                    if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
-                    elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: '))
-                    elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m]: '))
-                    elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: '))
-                    elif 3  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 5:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: '))
-                    elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[36m5\033[m]: '))
-                    elif 3  in lista_dicas_usadas and 4  in lista_dicas_usadas and 5 in lista_dicas_usadas or tentativas == 4:
-                        dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: '))
-                    
-                elif tentativas > 3 and num_de_dicas == 1: 
-                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m]: '))
-                    
-                elif tentativas < 3:
-                    print('\033[1;35mVocê não consegue mais comprar nenhuma dica! :( \033[m')
-                    dica = 0
-                    
-                if dica == 0:
-                    tentativas = tentativas
-
-                if dica == 1:
-                    while True:
-                        if len(lista_cores_bandeira) != len(lista_impressa_cores):
-                            cor = random.choice(lista_cores_bandeira)
-                            if cor not in lista_impressa_cores:
-                                if 1 not in lista_dicas_usadas:
-                                    str_cor = ''
-                                    str_com_virgula = virg.str_virgula(str_cor,cor)
-                                    lista_impressa_cores.append(cor)
-                                    tentativas -= 4
-                                    lista_dicas_usadas.append(1)  
-                                else:
-                                    str_com_virgula = virg.str_virgula(str_com_virgula,cor)
-                                    lista_impressa_cores.append(cor)
-                                    tentativas -= 4
-                                break
-                                       
-                        else:
-                            print('Ja foram todas as cores!')
-                            break
+                    if tentativas > 3:
+                        print('----------------------------------------------')
+                        print ('')
                         
-                if dica == 2:
-                    while True:
-                        letra_printada = Sl.sorteia_letra(capital, lista_vazia)
-                        if letra_printada not in letras_escolhidas:
-                            if 2 not in lista_dicas_usadas:
-                                letras_escolhidas.append(letra_printada)
-                                str_imcompleta = ''
-                                str_completa = virg.str_virgula(str_imcompleta, letra_printada)
-                                tentativas -= 3
-                                lista_dicas_usadas.append(2)
+                    if tentativas > 7 and 3 not in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas and len(lista_cores_bandeira) != len(lista_impressa_cores):
+                        dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
+                    
+                    elif tentativas > 7 and len(lista_cores_bandeira) == len(lista_impressa_cores) and 3 not in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                        dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
+                    
+                    elif tentativas >= 7 and len(lista_cores_bandeira) == len(lista_impressa_cores):
+                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
+                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: ')
+                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|]: ')
+                        elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m]: ')
+                        elif 3  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 5:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[35m4\033[m]: ')
+                        elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[36m5\033[m]: ')
+                    
+                    elif tentativas >= 7 and len(lista_cores_bandeira) != len(lista_impressa_cores):
+                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
+                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: ')
+                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m]: ')
+                        elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: ')
+                        elif 3  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 5:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: ')
+                        elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[36m5\033[m]: ')
+                        elif 3  in lista_dicas_usadas and 4  in lista_dicas_usadas and 5 in lista_dicas_usadas or tentativas == 4:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: ')
+                        
+                    elif tentativas > 3 and num_de_dicas == 1: 
+                        dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m]: ')
+                        
+                    elif tentativas <= 3:
+                        print('\033[1;35mVocê não consegue mais comprar nenhuma dica! :( \033[m')
+                        dica = '0'
+                        
+                    if dica == '0':
+                        tentativas = tentativas
+
+                    if dica == '1':
+                        while True:
+                            if len(lista_cores_bandeira) != len(lista_impressa_cores):
+                                cor = random.choice(lista_cores_bandeira)
+                                if cor not in lista_impressa_cores:
+                                    if 1 not in lista_dicas_usadas:
+                                        str_cor = ''
+                                        str_com_virgula = virg.str_virgula(str_cor,cor)
+                                        lista_impressa_cores.append(cor)
+                                        tentativas -= 4
+                                        lista_dicas_usadas.append(1)  
+                                    else:
+                                        str_com_virgula = virg.str_virgula(str_com_virgula,cor)
+                                        lista_impressa_cores.append(cor)
+                                        tentativas -= 4
+                                    break
+                                        
                             else:
-                                letras_escolhidas.append(letra_printada)
-                                str_completa = virg.str_virgula(str_completa, letra_printada)
-                                tentativas -= 3
-                            break
-                    
-                if dica == 3:
-                    if dica not in lista_dicas_usadas:
-                        lista_dicas_usadas.append(3)
-                        tentativas -= 6
-                    else:
-                        print('\033[1;41mEstá dica já foi usada!\033[m')
+                                print('Ja foram todas as cores!')
+                                break
+                        dica = 8   
+                    if dica == '2':
+                        while True:
+                            letra_printada = Sl.sorteia_letra(capital, lista_vazia)
+                            if letra_printada not in letras_escolhidas:
+                                if 2 not in lista_dicas_usadas:
+                                    letras_escolhidas.append(letra_printada)
+                                    str_imcompleta = ''
+                                    str_completa = virg.str_virgula(str_imcompleta, letra_printada)
+                                    tentativas -= 3
+                                    lista_dicas_usadas.append(2)
+                                else:
+                                    letras_escolhidas.append(letra_printada)
+                                    str_completa = virg.str_virgula(str_completa, letra_printada)
+                                    tentativas -= 3
+                                break
+                        dica = 8 
                         
-                if dica == 4:
-                    if dica not in lista_dicas_usadas:
-                        lista_dicas_usadas.append(4)
-                        tentativas -= 5
-                    else:
-                        print('\033[1;41mEstá dica já foi usada!\033[m')
-
-                if dica == 5:
-                     if dica not in lista_dicas_usadas:
-                        lista_dicas_usadas.append(5)
-                        tentativas -= 7
-                     else:
-                        print('\033[1;41mEstá dica já foi usada!\033[m')
-                    
+                    if dica == '3':
+                        if dica not in lista_dicas_usadas:
+                            lista_dicas_usadas.append(3)
+                            tentativas -= 6
+                        else:
+                            print('\033[1;41mEstá dica já foi usada!\033[m')
+                        dica = 8    
                         
-                if dica not in lista_opcao_dicas:
-                    print('\033[1;33mOpção Inválida\033[m')
-                    dica = 0
+                    if dica == '4':
+                        if dica not in lista_dicas_usadas:
+                            lista_dicas_usadas.append(4)
+                            tentativas -= 5
+                        else:
+                            print('\033[1;41mEstá dica já foi usada!\033[m')
+                        dica = 8 
+                        
+                    if dica == '5':
+                        if dica not in lista_dicas_usadas:
+                            lista_dicas_usadas.append(5)
+                            tentativas -= 7
+                        else:
+                            print('\033[1;41mEstá dica já foi usada!\033[m')
+                        
+                        dica = 8 
                     
+                    elif dica != 2 and dica not in lista_opcao_dicas and dica != 8:
+                        print('\033[1;33mOpção Inválida\033[m')
+                        dica = 8
+                            
+                   
+                                
 
             if resposta  == pais_escolhido:
                 i = 100      
@@ -312,8 +322,8 @@ if iniciar == 'sim':
                 time.sleep(0.5)
                 iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
         
-        if tentativas <= 0: 
-            acabou = input('Suas \033[33mtentativas\033[m acabaram, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :')
+        if tentativas <= 0 and i != 100: 
+            acabou = input('Suas \033[33mtentativas\033[m acabaram, o pais era \033[42m{} \033[m, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :'.format(pais_escolhido.upper()))
             if acabou == 'sim':
                 time.sleep(0.5)
                 print (resposta)

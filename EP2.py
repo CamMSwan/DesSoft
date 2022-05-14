@@ -113,7 +113,7 @@ if iniciar == 'sim':
                         print ('Continente: {}'.format(continente_escolhido))
                         
                     break
-                
+            print('') 
             if lista_paises_por_distancia != []:
                 while z < len(lista_paises_por_distancia):
                     distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])
@@ -215,9 +215,7 @@ if iniciar == 'sim':
                     dica = 0
                     
                 if dica == 0:
-                    print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
-        
-                    resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
+                    tentativas = tentativas
 
                 if dica == 1:
                     while True:

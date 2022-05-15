@@ -94,7 +94,7 @@ if iniciar == 'sim':
         
         i = 0
         while i < tentativas:
-            print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
+            print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))     
         
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
@@ -157,7 +157,7 @@ if iniciar == 'sim':
                     
                 if dica == 0:
                     print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
-        
+                    
                     resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
 
                 if dica == 1:

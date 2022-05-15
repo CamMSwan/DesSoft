@@ -85,7 +85,7 @@ if iniciar == 'sim':
             
 
         
-        #print(pais_escolhido)
+        print(pais_escolhido)
         #print(dados_pais_escolhido)
         #print (lista_cores_bandeira)
         
@@ -109,11 +109,26 @@ if iniciar == 'sim':
                         print ('Continente: {}'.format(continente_escolhido))
                         
                     break
+            
             print('') 
             if lista_paises_por_distancia != []:
                 while z < len(lista_paises_por_distancia):
                     distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])
-                    print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    if distancia_eles <= 1000:
+                        #verde
+                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    elif distancia_eles > 1000 and distancia_eles <= 3000:
+                        #amarelo
+                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    elif distancia_eles > 3000 and distancia_eles <= 5000:
+                        #ciano
+                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    elif distancia_eles > 5000 and distancia_eles <= 9000:
+                        #vermelho
+                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                    elif distancia_eles > 9000:
+                        #preto
+                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     z += 1
             print('')
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))

@@ -142,6 +142,7 @@ if iniciar == 'sim':
                 longitude_re = coordenadas_resposta['longitude']
                 distancia_eles = Dist.haversine(r,latidude_pe,longitude_pe,latidude_re,longitude_re)
                 lista_resposta = [resposta,distancia_eles]
+                esta_na_lista = El.esta_na_lista(resposta,lista_paises_tentados)
 
                 lista_paises_por_distancia = Lo.adiciona_em_ordem(resposta,distancia_eles,lista_paises_por_distancia)
                 #ainda tem que printar coloido os valores acima 

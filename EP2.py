@@ -49,6 +49,9 @@ if iniciar == 'sim':
         print('Comandos:')
         print('     dica        --> entra no mercado de dicas')
         print('     desisto     --> desiste da rodada')
+        print('')
+        print('     Nome dos paises em portugues e sem acentos ou caracteres especiais')
+        print('     Exemplos de caracteres nao incluidas nos nomes: (ç,ã,ô,é)')
         time.sleep(0.5)
 
         print('')
@@ -88,7 +91,7 @@ if iniciar == 'sim':
             
 
         
-        print(pais_escolhido)
+        #print(pais_escolhido)
         #print(dados_pais_escolhido)
         #print (lista_cores_bandeira)
         
@@ -114,7 +117,7 @@ if iniciar == 'sim':
                         
                     break
             
-           
+                print('')
             if lista_distancias != []:
                 while z < len(lista_paises_por_distancia):
                     distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])

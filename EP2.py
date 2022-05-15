@@ -85,14 +85,12 @@ if iniciar == 'sim':
 
         
         print(pais_escolhido)
-        #print(dados_pais_escolhido)
-        #print (lista_cores_bandeira)
+        print(dados_pais_escolhido)
+        print (lista_cores_bandeira)
         
         i = 0
         while i < tentativas:
-            print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))     
-        
-
+             
             z = 0 
             d = 0
             print('')
@@ -112,34 +110,30 @@ if iniciar == 'sim':
                         
                     break
             
-            print('') 
+           
             if lista_paises_por_distancia != []:
                 while z < len(lista_paises_por_distancia):
                     distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])
                     if distancia_eles <= 1000:
-                        #verde
-                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                        print('\033[32m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     elif distancia_eles > 1000 and distancia_eles <= 3000:
-                        #amarelo
-                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                        print('\033[33m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     elif distancia_eles > 3000 and distancia_eles <= 5000:
-                        #ciano
-                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                        print('\033[36m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     elif distancia_eles > 5000 and distancia_eles <= 9000:
-                        #vermelho
-                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                        print('\033[31m{0} km ----> {1}\033[m'.format( distancia_normalizada,lista_paises_por_distancia[z][0] ))
                     elif distancia_eles > 9000:
-                        #preto
-                        print('{0} km ----> {1}'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
+                        print('\033[35m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     z += 1
                     
-            print('')
+           
             
             if lista_paises_por_distancia!= []:
-                print('Errou, nao é {}'.format(resposta))
+                print('Errou, nao é {}, tente novamente.'.format(resposta))
                 print('')
                 
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
+            print('')
 
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
@@ -230,13 +224,13 @@ if iniciar == 'sim':
                         print(' [\033[33m2\033[m] Letra da capital    \33[33m->\033[m custa 3 tentativas')
                         num_de_dicas += 1
                     if 3 not in lista_dicas_usadas and tentativas > 6:
-                        print(' [\033[34m3\033[m] Área                \033[34m->\033[m custa 6 tentavis')
+                        print(' [\033[34m3\033[m] Área                \033[34m->\033[m custa 6 tentativas')
                         num_de_dicas += 1
                     if 4 not in lista_dicas_usadas and tentativas > 5:
-                        print(' [\033[35m4\033[m] Populeção           \033[35m->\033[m custa 5 tentativas')
+                        print(' [\033[35m4\033[m] População           \033[35m->\033[m custa 5 tentativas')
                         num_de_dicas += 1
                     if 5 not in lista_dicas_usadas and tentativas > 7:
-                        print(' [\033[36m5\033[m] COntinente          \033[36m->\033[m custa 7 tentativas')
+                        print(' [\033[36m5\033[m] Continente          \033[36m->\033[m custa 7 tentativas')
                         num_de_dicas += 1
                     if tentativas > 3:
                         print('----------------------------------------------')

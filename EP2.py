@@ -24,6 +24,7 @@ if iniciar == 'sim':
         lista_paises_tentados = []
         dados_normalizados = Bp.normaliza(Base_paises.continentes)
         lista_paises_por_distancia = []
+        lista_distancias = []
         r = 6371
         
         def lista_pais(comando):
@@ -88,8 +89,8 @@ if iniciar == 'sim':
 
         
         print(pais_escolhido)
-        print(dados_pais_escolhido)
-        print (lista_cores_bandeira)
+        #print(dados_pais_escolhido)
+        #print (lista_cores_bandeira)
         
         i = 0
         while i < tentativas:
@@ -114,24 +115,24 @@ if iniciar == 'sim':
                     break
             
            
-            if lista_paises_por_distancia != []:
+            if lista_distancias != []:
                 while z < len(lista_paises_por_distancia):
                     distancia_normalizada = norm.tira_virgula_normaliza(lista_paises_por_distancia[z][1])
-                    if distancia_eles <= 1000:
+                    if lista_distancias[z] <= 1000:
                         print('\033[32m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
-                    elif distancia_eles > 1000 and distancia_eles <= 3000:
+                    elif lista_distancias[z] > 1000 and lista_distancias[z] <= 3000 :
                         print('\033[33m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
-                    elif distancia_eles > 3000 and distancia_eles <= 5000:
+                    elif lista_distancias[z] > 3000 and lista_distancias[z] <= 5000 :
                         print('\033[36m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
-                    elif distancia_eles > 5000 and distancia_eles <= 9000:
+                    elif lista_distancias[z] > 5000 and lista_distancias[z] <= 9000 :
                         print('\033[31m{0} km ----> {1}\033[m'.format( distancia_normalizada,lista_paises_por_distancia[z][0] ))
-                    elif distancia_eles > 9000:
+                    elif lista_distancias[z] > 9000:
                         print('\033[35m{0} km ----> {1}\033[m'.format(distancia_normalizada,lista_paises_por_distancia[z][0]))
                     z += 1
                     
            
             
-            if lista_paises_por_distancia!= []:
+            if lista_paises_por_distancia!= [] and resposta in lista_paises:
                 print('Errou, nao é {}, tente novamente.'.format(resposta))
                 print('')
                 
@@ -150,6 +151,8 @@ if iniciar == 'sim':
                 esta_na_lista = El.esta_na_lista(resposta,lista_paises_tentados)
 
                 lista_paises_por_distancia = Lo.adiciona_em_ordem(resposta,distancia_eles,lista_paises_por_distancia)
+                lista_distancias = Lo.adiciona_em_distancia(distancia_eles,lista_distancias)
+                l = 0
                 #ainda tem que printar coloido os valores acima 
 
                 if lista_resposta in lista_paises_tentados:

@@ -15,3 +15,20 @@ def adiciona_em_ordem(nome, distancia, lista):
     if lista1 not in lista_nova:
             lista_nova.append(lista1)
     return lista_nova
+
+def adiciona_em_distancia(distancia, lista):
+    lista_nova = []
+    if lista == []:
+            lista_nova.append(distancia)
+    for distancias in lista:
+        if distancias < distancia:
+            lista_nova.append(distancias)
+        elif distancia < distancias and distancia not in lista_nova:
+            lista_nova.append(distancia)
+            lista_nova.append(distancias)
+        else:
+            lista_nova.append(distancias)
+
+    if distancia not in lista_nova:
+            lista_nova.append(distancia)
+    return lista_nova

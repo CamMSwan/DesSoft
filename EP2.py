@@ -119,7 +119,7 @@ if iniciar == 'sim':
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
-            if resposta in lista_paises and resposta != dica:
+            if resposta in lista_paises and resposta != 'dica':
                 dados_resposta = dados_normalizados[resposta]
                 coordenadas_resposta = dados_resposta['geo']
                 latidude_re = coordenadas_resposta['latitude']

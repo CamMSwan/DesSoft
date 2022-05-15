@@ -346,7 +346,7 @@ if iniciar == 'sim':
                 break
         
         if i == 50:
-            print("\033[1;30;42mFRACO!, o país era {}) \033[m".format(pais_escolhido))
+            print("\033[1;30;42mFRACO!, o país era \033[32m{}\033[m\033[m".format(pais_escolhido))
             desistencia = input('\033[1;36mTem certeza que quer desistir? \033[32msim\033[m/\033[31mnao\033[m:')
             if desistencia not in ('sim','nao'):
                     print("\033[31mResposta Invalida\033[m")
@@ -357,6 +357,10 @@ if iniciar == 'sim':
             if desistencia == 'nao':
                 time.sleep(0.5)
                 iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+                if iniciar == 'nao':
+                    print('\033[35mAté Logo!\033[m')
+                    Jogo = 1
+                
         
         if tentativas <= 0 and i != 100: 
             acabou = input('Suas \033[33mtentativas\033[m acabaram, o pais era \033[32m{}\033[m, gostaria de \033[44mreiniciar o jogo?\033[m \033[32msim\033[m/\033[31mnao\033[m :'.format(pais_escolhido.upper()))

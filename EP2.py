@@ -50,8 +50,13 @@ if iniciar == 'sim':
         print('     dica        --> entra no mercado de dicas')
         print('     desisto     --> desiste da rodada')
         print('')
+        print('     Para chutar um pais digite o nome dele direto, com letras minusculas')
+        print('')
         print('     Nome dos paises em portugues e sem acentos ou caracteres especiais')
         print('     Exemplos de caracteres nao incluidas nos nomes: (ç,ã,ô,é)')
+        print('')
+        print('     Seus chutes serão ordenados de mais próximo ao mais longe do pais escolhido')
+       
         time.sleep(0.5)
 
         print('')

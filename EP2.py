@@ -45,7 +45,6 @@ if iniciar == 'sim':
         print('Comandos:')
         print('     dica        --> entra no mercado de dicas')
         print('     desisto     --> desiste da rodada')
-        print('     inventário  --> exibe sua posição')
         time.sleep(0.5)
 
         print('')
@@ -303,14 +302,20 @@ if iniciar == 'sim':
                             
                    
                                 
-
+            if resposta == 'Humberto':
+                print('Humberto melhor professor de DesSoft!')
+                
+            if resposta == 'Rezina':
+                print('Rezina melhor professor assistente de DesSoft!')
+                 
+            
             if resposta  == pais_escolhido:
                 i = 100      
             
             if resposta == 'desisto':
                 i = 50
             
-            if resposta not in lista_paises and resposta != 'dica' and resposta != 'desisto' :
+            if resposta not in lista_paises and resposta != 'dica' and resposta != 'desisto' and resposta != 'Humberto' and resposta != 'Rezina' :
                 print('\033[33mResposta Invalida\033[m')
 
         if i == 100:

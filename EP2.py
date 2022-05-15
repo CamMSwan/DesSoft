@@ -90,6 +90,9 @@ if iniciar == 'sim':
         
         i = 0
         while i < tentativas:
+            print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))     
+        
+
             z = 0 
             d = 0
             print('')
@@ -137,6 +140,7 @@ if iniciar == 'sim':
                 print('')
                 
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
+
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             
             if resposta in lista_paises and resposta != 'dica':
@@ -164,6 +168,52 @@ if iniciar == 'sim':
                 print('Processando...')
                 time.sleep(0.5)
                 #Menu de opções:
+
+                if tentativas > 7 and len(lista_dicas_usadas) == 0:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
+                elif tentativas > 7 and 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: '))
+                elif tentativas > 7 and 4 in lista_dicas_usadas and 3 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: '))
+                elif tentativas > 5 and 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m]: '))
+                elif tentativas > 7 and 3 in lista_dicas_usadas and 4 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[36m5\033[m]: '))
+                elif tentativas > 5 and 3 in lista_dicas_usadas and 5 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: '))
+                elif tentativas > 6 and 4 in lista_dicas_usadas and 5 in lista_dicas_usadas:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: '))
+                elif tentativas > 4:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: '))
+                elif tentativas > 3:
+                    dica = int(input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m]: '))
+                elif tentativas < 3:
+                    print('\033[1;35mVocê não consegue mais comprar nenhuma dica! :( \033[m')
+                    dica = 0
+                    
+                if dica == 0:
+                    print('Numero de tentativas \033[1;33m{}\033[m'.format(tentativas))
+                    
+                    resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
+
+                if dica == 1:
+                    while True:
+                        cor = random.choice(lista_cores_bandeira)
+                        if cor not in lista_impressa_cores:
+                            lista_impressa_cores.append(cor)
+                            tentativas -= 4
+                            break
+                    print ('Cores da bandeira: {}'.format(lista_impressa_cores))
+
+                if dica == 2:
+                    while True:
+                        letra_printada = Sl.sorteia_letra(capital, lista_vazia)
+                        if letra_printada not in letras_escolhidas:
+                            letras_escolhidas.append(letra_printada)
+                            print(letra_printada)
+                            tentativas -= 3
+                            break
+
                 
                 dica = 8
                 if dica == 8:     

@@ -131,6 +131,11 @@ if iniciar == 'sim':
                     z += 1
                     
             print('')
+            
+            if lista_paises_por_distancia!= []:
+                print('Errou, nao é {}'.format(resposta))
+                print('')
+                
             print('Você tem \033[33m{}\033[m tentativas'.format(tentativas))
             resposta = input('Você quer \033[1;31;43mchutar um país\033[m ou quer uma \033[1;45mdica\033[m? ')
             

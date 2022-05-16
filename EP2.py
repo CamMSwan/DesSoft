@@ -98,7 +98,7 @@ if iniciar == 'sim':
             
 
         
-        print(pais_escolhido)
+        #print(pais_escolhido)
         #print(dados_pais_escolhido)
         #print (lista_cores_bandeira)
         

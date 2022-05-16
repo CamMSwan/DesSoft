@@ -53,8 +53,8 @@ if iniciar == 'sim':
         print('')
         print('     Para chutar um pais digite o nome dele direto, com letras minusculas')
         print('')
-        print('     Nome dos paises em portugues e sem acentos ou caracteres especiais')
-        print('     Exemplos de caracteres nao incluidas nos nomes: (ç,ã,ô,é)')
+        print('     Nome dos paises em \033[1;36mportugues\033[m e \033[1;31msem acentos ou caracteres especiais\033[m')
+        print('     Exemplos de caracteres \033[1;31mnao incluidas\033[m nos nomes: (ç,ã,ô,é)')
         print('')
         print('     Seus chutes serão ordenados de mais próximo ao mais longe do pais escolhido')
        

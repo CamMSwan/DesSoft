@@ -39,6 +39,7 @@ if iniciar == 'sim':
         print(' ===============================')
         print('|                               |')
         print('| \033[1;32mBem Vindo ao Adivinha Paises!\033[m |')
+        print('|        \033[1;36mCameron e Nina\033[m         |')
         print('|             \033[32m2022\033[m              |')
         print(' ====== Desing de Software ===== ')
 

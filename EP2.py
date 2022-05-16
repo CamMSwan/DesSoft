@@ -18,8 +18,9 @@ if iniciar not in lista_opcoes_iniciar:
     print('\033[1;33mOpção Inválida\033[m')
     iniciar = input('\033[1;36mDesejar iniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
 if iniciar == 'sim':
+    i = 0
     Jogo = 0
-    while Jogo == 0:
+    while Jogo == 0 and i == 0:
         tentativas = 20
         lista_paises_tentados = []
         dados_normalizados = Bp.normaliza(Base_paises.continentes)
@@ -97,7 +98,7 @@ if iniciar == 'sim':
             
 
         
-        #print(pais_escolhido)
+        print(pais_escolhido)
         #print(dados_pais_escolhido)
         #print (lista_cores_bandeira)
         
@@ -340,6 +341,9 @@ if iniciar == 'sim':
         if i == 100:
             print("\033[1;30;42mPARABENS, VOCE ADIVINHOU O PAÍS QUE FOI ESCOLHIDO! :) \033[m")
             iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+            if iniciar == 'sim':
+                Jogo = 0
+                i = 0
             if iniciar not in ('sim','nao'):
                     print("\033[31mResposta Invalida\033[m")
             if iniciar == 'nao':

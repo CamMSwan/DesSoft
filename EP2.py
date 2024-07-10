@@ -165,13 +165,13 @@ if iniciar == 'sim':
                 l = 0
                 #ainda tem que printar coloido os valores acima 
 
-                if lista_resposta in lista_paises_tentados:
+                if resposta in lista_paises_tentados:
                     print('\033[1;41mVocê ja chutou este pais!\033[m')
 
-                elif lista_resposta not in lista_paises_tentados:
-                    lista_paises_tentados.append(lista_resposta)
-                    
-                tentativas -= 1
+                elif resposta not in lista_paises_tentados:
+                    lista_paises_tentados.append(resposta)
+                    tentativas -= 1
+                
 
             if resposta == 'dica':
                 print('')
@@ -212,12 +212,12 @@ if iniciar == 'sim':
                     elif tentativas > 7 and len(lista_cores_bandeira) == len(lista_impressa_cores) and 3 not in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
                         dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
                     
-                    elif tentativas >= 7 and len(lista_cores_bandeira) == len(lista_impressa_cores):
-                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    elif tentativas >= 5 and len(lista_cores_bandeira) == len(lista_impressa_cores):
+                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas and tentativas > 6:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
-                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas and tentativas > 5:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: ')
-                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas and tentativas > 7:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m|]: ')
                         elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[34m3\033[m]: ')
@@ -226,12 +226,12 @@ if iniciar == 'sim':
                         elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[33m2\033[m|\033[36m5\033[m]: ')
                     
-                    elif tentativas >= 7 and len(lista_cores_bandeira) != len(lista_impressa_cores):
-                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas:
+                    elif tentativas >= 5 and len(lista_cores_bandeira) != len(lista_impressa_cores):
+                        if 3 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 5 not in lista_dicas_usadas and tentativas > 7:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m|\033[36m5\033[m]: ')
-                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                        elif 4 in lista_dicas_usadas and 5 not in lista_dicas_usadas and 3 not in lista_dicas_usadas and tentativas > 7:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[36m5\033[m]: ')
-                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas:
+                        elif 5 in lista_dicas_usadas and 4 not in lista_dicas_usadas and 3 not in lista_dicas_usadas and tentativas > 6:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m|\033[35m4\033[m]: ')
                         elif 4  in lista_dicas_usadas and 5 in lista_dicas_usadas and tentativas > 6:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: ')
@@ -239,7 +239,13 @@ if iniciar == 'sim':
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: ')
                         elif 4  in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 7:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[36m5\033[m]: ')
-                        elif 3  in lista_dicas_usadas and 4  in lista_dicas_usadas and 5 in lista_dicas_usadas or tentativas == 4:
+                        elif 3  in lista_dicas_usadas and 4  in lista_dicas_usadas and 5 in lista_dicas_usadas or tentativas > 4 and tentativas < 5:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: ')
+                        elif 4 not in lista_dicas_usadas and 3 in lista_dicas_usadas and tentativas > 5:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[35m4\033[m]: ')
+                        elif 3 not in lista_dicas_usadas and 4 in lista_dicas_usadas and tentativas > 6:
+                            dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m|\033[34m3\033[m]: ')
+                        else:
                             dica = input('Escolha a opção [\033[31m0\033[m|\033[32m1\033[m|\033[33m2\033[m]: ')
                         
                     elif tentativas > 3 and num_de_dicas == 1: 
@@ -362,6 +368,9 @@ if iniciar == 'sim':
             if desistencia == 'nao':
                 time.sleep(0.5)
                 iniciar = input('\033[1;36mDesejar reiniciar o jogo? \033[32msim\033[m/\033[31mnao\033[m:')
+                if iniciar == 'sim':
+                    Jogo = 0
+                    i = 0
                 if iniciar == 'nao':
                     print('\033[35mAté Logo!\033[m')
                     Jogo = 1
